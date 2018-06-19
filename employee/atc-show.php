@@ -58,7 +58,7 @@ $rs = mysqli_query($conn, $sql);
                             <tr>
                                 <td><?= $index ?></td>
                                 <td><?= $row['service_date'] ?></td>
-                                <td><?= $row['firstname'] ?><?= $row['lastname'] ?></td>
+                                <td><?= $row['firstname'] ?> <?= $row['lastname'] ?></td>
                                 <td><?= $row['tel'] ?></td>
                                 <td><?= $row['car_char'] ?>-<?= $row['car_number'] ?> <?= $row['PROVINCE_NAME'] ?></td>
                                 <td><?= $row['car_chassis'] ?></td>
@@ -84,4 +84,4 @@ $rs = mysqli_query($conn, $sql);
         </div>
     </div>
 
-    <h1 class="text-danger"> เดียวจะกลับมาทำ work_status</h1>
+    <!--<h1 class="text-danger"> เดียวจะกลับมาทำ work_status</h1>-->

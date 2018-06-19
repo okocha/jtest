@@ -64,7 +64,7 @@
                         <select name="id_category_car" class="form-control form-control-sm" required>
                             <option value="0">---เลือกประเภทรถ---</option>
                             <?php
-                            $sql = "SELECT * FROM tb_category_car";
+                            $sql = "SELECT * FROM tb_category_car ORDER BY(category_car_name) ASC";
                             $rs = mysqli_query($conn, $sql);
 
                             while ($row = mysqli_fetch_array($rs)) {
@@ -105,6 +105,10 @@
                     <div class="form-group">
                         <label>รุ่นโมเดลรถ</label>
                         <input type="text" class="form-control form-control-sm" name="car_model" required> 
+                    </div>
+                    <div class="form-group">
+                        <label>CC รถ</label>
+                        <input type="text" class="form-control form-control-sm" name="car_cc" required> 
                     </div>
                     <div class="form-group">
                         <label>เลขตัวถังรถ</label>

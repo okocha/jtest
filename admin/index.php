@@ -19,6 +19,8 @@ include '../connect/connect.php';
         <link rel="stylesheet" href="../assets/css/sticky-footer-navbar.css">
 
         <link rel="stylesheet" href="../assets/datatable/jquery.dataTables.min.css">
+        
+        <link rel="stylesheet" href="../assets/font-awesome/css/font-awesome.min.css">
 
     </head>
     <body>

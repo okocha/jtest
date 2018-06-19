@@ -56,7 +56,7 @@ $rs = mysqli_query($conn, $sql);
                                 <td><?= $row['category_car_name'] ?></td>
                                 <td>
 
-                                    <form action="index.php?menu=atc-old-addForm-step3-DB&id=<?= $row['id_order_service'] ?>" method="POST">
+                                    <form action="index.php?menu=atc-old-addForm-step2-confirm&id=<?= $row['id_order_service'] ?>" method="POST">
                                         <input type="hidden" name="id_order_service" value="<?= $row['id_order_service'] ?>">
                                         <input type="hidden" name="id_car" value="<?= $row['id_car'] ?>">
                                         <input type="hidden" name="id_customer" value="<?= $row['id_customer'] ?>">

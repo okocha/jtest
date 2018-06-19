@@ -20,9 +20,10 @@ $car_province_id = $_POST['car_province_id'];
 
 $car_brand = $_POST['car_brand'];
 $car_model = $_POST['car_model'];
+$car_cc = $_POST['car_cc'];
 $car_chassis = $_POST['car_chassis'];
 
-$price_tax_fine =$_POST['price_tax_fine'];
+$price_tax_fine = $_POST['price_tax_fine'];
 
 
 
@@ -55,6 +56,7 @@ $sql = " INSERT INTO tb_car(
     car_province_id,
     car_brand,
     car_model,
+    car_cc,
     car_chassis,
     car_reg_date,
     car_exp_date,
@@ -66,6 +68,7 @@ $sql = " INSERT INTO tb_car(
     '$car_province_id',
     '$car_brand',
     '$car_model',
+    '$car_cc',
     '$car_chassis',
     '$car_reg_date',
     '$car_exp_date',
@@ -99,8 +102,8 @@ if ($rs1 && $rs2 && $rs3) {
     echo 'Inserted';
     ?>
     <script type="text/javascript">
-            alert('บันทึกสำเร็จ');
-            window.location='index.php?menu=atc-show';
+        alert('บันทึกสำเร็จ');
+        window.location = 'index.php?menu=atc-show';
     </script>
 
     <?php

@@ -34,7 +34,7 @@ $price_car_tax = $row['price_car_tax'];
 $price_service = $row['price_service'];
 $total_price = $price_check_car + $price_atc + $price_car_tax + $price_service;
 ?>
-<h1>พรบ. และทะเบียน ของลูกค้า</h1>
+<h1>พรบ. และทะเบียน ของลูกค้าเก่า</h1>
 
 <div class="row">
     <div class="col-md-12">
@@ -162,9 +162,9 @@ $total_price = $price_check_car + $price_atc + $price_car_tax + $price_service;
 
 
 
-                <button type="submit" class="btn btn-success">บันทึก</button>
-                <input type="button" value="ยกเลิก" class="btn btn-danger" onclick="history.back()">
 
+                <input type="button" value="ยกเลิก" class="btn btn-danger" onclick="history.back()">
+                <button type="submit" class="btn btn-success">บันทึก</button>
             </form>
 
         </div>

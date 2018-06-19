@@ -25,7 +25,7 @@ $row = mysqli_fetch_array($rs);
 ?>
 
 
-<h1>พรบ. และ ทะเบียน ลูกค้า</h1>
+<h1>แก้ไข พรบ. และ ทะเบียน ลูกค้า</h1>
 <form action="index.php?menu=atc-editForm-confirm" method="post">
     <input type="hidden" name="id_order_service" value="<?= $id ?>">
     <input type="hidden" name="id_car" value="<?= $row['id_car'] ?>">
@@ -97,7 +97,7 @@ $row = mysqli_fetch_array($rs);
                     <select name="id_category_car" class="form-control form-control-sm" required>
                         <option value="0">---เลือกประเภทรถ---</option>
                         <?php
-                        $sql2 = "SELECT * FROM tb_category_car";
+                        $sql2 = "SELECT * FROM tb_category_car ORDER BY(category_car_name) ASC";
                         $rs2 = mysqli_query($conn, $sql2);
 
                         while ($row2 = mysqli_fetch_array($rs2)) {
@@ -164,8 +164,9 @@ $row = mysqli_fetch_array($rs);
 
     <div class="col-md-12">
         <div class="text-center">
-            <button type="submit" class="btn btn-success">บันทึก</button>
             <a href="index.php?menu=atc-show" class="btn btn-danger">ยกเลิก</a>
+            <button type="submit" class="btn btn-success">บันทึก</button>
+            
         </div>
     </div>
 </div>

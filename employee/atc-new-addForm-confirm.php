@@ -21,6 +21,7 @@ $car_province_name = explode(':', $_POST['car_province_id'])[1];
 
 $car_brand = $_POST['car_brand'];
 $car_model = $_POST['car_model'];
+$car_cc = $_POST['car_cc'];
 $car_chassis = $_POST['car_chassis'];
 
 $sql = "SELECT * FROM tb_category_car WHERE id = '$id_category_car' ";
@@ -28,14 +29,45 @@ $rs = mysqli_query($conn, $sql);
 
 $row = mysqli_fetch_array($rs);
 
-$price_check_car = $row['price_check_car'];
+
+if (check_year($car_reg_date) <= 7) {
+    $price_check_car = 0;
+} else {
+    $price_check_car = $row['price_check_car'];
+}
 $price_atc = $row['price_atc'];
-$price_car_tax = $row['price_car_tax'];
+
+if ($row['price_car_tax'] == 0) {
+    //ถ้าเป็น price_car_tax ==0 แสดงว่าเป็นรถ รย.1
+    echo 'if';
+    $price_car_tax = calculate_cc_price_car_tax($car_cc, $car_reg_date);
+} else {
+    $price_car_tax = $row['price_car_tax'];
+    echo 'else';
+}
+
 
 $price_tax_fine = calculate_price_tax_fine($car_exp_date, $price_car_tax);
-
 $price_service = $row['price_service'];
+
 $total_price = $price_check_car + $price_atc + $price_car_tax + $price_service + $price_tax_fine;
+
+function check_year($car_reg_date) {
+    $date1 = date("Y-m-d", strtotime($car_reg_date));
+    $date2 = date("Y-m-d");
+
+    $datetime1 = date_create($date1);
+    $datetime2 = date_create($date2);
+
+    $year = 0;
+
+    if ($datetime1 < $datetime2) {
+        $interval = date_diff($datetime1, $datetime2);
+
+        $year = $interval->format('%y');
+    }
+    return $year;
+}
 
 function calculate_price_tax_fine($car_exp_date, $price_car_tax) {
     $date1 = date("Y-m-d", strtotime($car_exp_date));
@@ -62,6 +94,57 @@ function calculate_price_tax_fine($car_exp_date, $price_car_tax) {
 
     $result = ($total_month * ( ($price_car_tax * 1) / 100 ));
     return $result;
+}
+
+function calculate_cc_price_car_tax($car_cc, $car_reg_date) {
+
+
+    $year = check_year($car_reg_date);
+    $cc = $car_cc;
+
+    $year5;
+    $year6;
+    $year7;
+    $year8;
+    $year9;
+    $year10;
+
+    if ($cc <= 600) {
+        $year5 = $cc * 0.5;
+        $year6 = $year5 - (($year5 * 10) / 100);
+        $year7 = $year5 - (($year5 * 20) / 100);
+        $year8 = $year5 - (($year5 * 30) / 100);
+        $year9 = $year5 - (($year5 * 40) / 100);
+        $year10 = $year5 - (($year5 * 50) / 100);
+    } else if ($cc >= 601 && $cc <= 1800) {
+        $year5 = (($cc - 601) * 1.5) + (600 * 0.5);
+        $year6 = $year5 - (($year5 * 10) / 100);
+        $year7 = $year5 - (($year5 * 20) / 100);
+        $year8 = $year5 - (($year5 * 30) / 100);
+        $year9 = $year5 - (($year5 * 40) / 100);
+        $year10 = $year5 - (($year5 * 50) / 100);
+    } else if ($cc >= 1801) {
+        $year5 = (600 * 0.5) + ((1800 - 601) * 1.5) + (($cc - 1801) * 4);
+        $year6 = $year5 - (($year5 * 10) / 100);
+        $year7 = $year5 - (($year5 * 20) / 100);
+        $year8 = $year5 - (($year5 * 30) / 100);
+        $year9 = $year5 - (($year5 * 40) / 100);
+        $year10 = $year5 - (($year5 * 50) / 100);
+    }
+
+    if ($year <= 5) {
+        return $year5;
+    } else if ($year == 6) {
+        return $year6;
+    } else if ($year == 7) {
+        return $year7;
+    } else if ($year == 8) {
+        return $year8;
+    } else if ($year == 9) {
+        return $year9;
+    } else if ($year >= 10) {
+        return $year10;
+    }
 }
 ?>
 <h1>พรบ. และ ทะเบียน ของลูกค้า</h1>
@@ -160,6 +243,10 @@ function calculate_price_tax_fine($car_exp_date, $price_car_tax) {
                         <td> <?= $car_model ?> </td>
                     </tr>
                     <tr>
+                        <th>cc รถ</th>
+                        <td> <?= $car_cc ?> </td>
+                    </tr>
+                    <tr>
                         <th>เลขตัวถังรถ</th>
                         <td> <?= $car_chassis ?> </td>
                     </tr>
@@ -189,7 +276,7 @@ function calculate_price_tax_fine($car_exp_date, $price_car_tax) {
                             <td> <?= number_format($price_check_car) ?> </td>
                             <td> <?= number_format($price_atc) ?> </td>
                             <td> <?= number_format($price_car_tax) ?> </td>
-                            <td class="text-primary"> <?= number_format($price_tax_fine, 2) ?> </td>
+                            <td> <?= number_format($price_tax_fine, 2) ?> </td>
                             <td> <?= number_format($price_service) ?> </td>
                             <td> <?= number_format($total_price) ?> </td>
                         </tr>
@@ -217,8 +304,9 @@ function calculate_price_tax_fine($car_exp_date, $price_car_tax) {
                 <input type="hidden" name="car_province_id" value="<?= $car_province_id ?>">
                 <input type="hidden" name="car_brand" value="<?= $car_brand ?>">
                 <input type="hidden" name="car_model" value="<?= $car_model ?>">
+                <input type="hidden" name="car_cc" value="<?= $car_cc ?>">
                 <input type="hidden" name="car_chassis" value="<?= $car_chassis ?>">
-                <input type="hidden" name="price_tax_fine" value="<?=$price_tax_fine?>">
+                <input type="hidden" name="price_tax_fine" value="<?= $price_tax_fine ?>">
 
 
                 <input type="button" value="ยกเลิก" class="btn btn-danger" onclick="history.back()">
