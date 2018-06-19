@@ -6,6 +6,7 @@ $lastname = $_POST['lastname'];
 $sex = $_POST['sex'];
 $address = $_POST['address'];
 $tel = $_POST['tel'];
+$price_service_express = $_POST['price_service_express'];
 
 $car_reg_date = $_POST['car_reg_date'];
 $car_exp_date = $_POSt['car_exp_date'];
@@ -24,6 +25,7 @@ $car_cc = $_POST['car_cc'];
 $car_chassis = $_POST['car_chassis'];
 
 $price_tax_fine = $_POST['price_tax_fine'];
+$price_car_tax = $_POST['price_car_tax'];
 
 
 
@@ -86,13 +88,18 @@ $sql = "INSERT INTO tb_order_service(
     id_car,
     id_insurance_type,
     service_date,
+    price_car_tax_order,
     price_tax_fine,
+    price_service_express,
     id_employee
-    )VALUES (
+    )
+    VALUES (
     '$INSERT_CAR_ID',
     '0',
     CURRENT_DATE(),
+    '$price_car_tax',
     '$price_tax_fine',
+    '$price_service_express',
     '$LOGIN_EMPLOYEE'
 )
          ";

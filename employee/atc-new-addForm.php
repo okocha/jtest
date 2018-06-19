@@ -39,6 +39,27 @@
                 </div>
             </div>
         </div>
+        
+        <div class="col-md-12">
+            
+            <div class="card">
+                <div class="card-header text-white bg-primary">
+                    ค่าบริการต่อภาษี
+                    </div>
+                <div class="card-body">
+                    <div class="form-group">
+
+                        <label>ต่อทะเบียนด่วน</label>
+                        <div class="form-group">
+                            <input type="number" class="form-control form-control-sm" name="price_service_express" value="0" required> 
+                        </div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+            
+        </div>
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header text-white bg-warning">
@@ -108,7 +129,7 @@
                     </div>
                     <div class="form-group">
                         <label>CC รถ</label>
-                        <input type="text" class="form-control form-control-sm" name="car_cc" required> 
+                        <input type="number" class="form-control form-control-sm" name="car_cc" value="0" required> 
                     </div>
                     <div class="form-group">
                         <label>เลขตัวถังรถ</label>

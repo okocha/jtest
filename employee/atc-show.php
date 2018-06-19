@@ -39,13 +39,11 @@ $rs = mysqli_query($conn, $sql);
                         <tr>
                             <th>#</th>
                             <th>วันที่มาใช้บริการ</th>
-                            <th>ชื่อลูกค้า</th>
-                            <th>เบอร์โทรศัพท์</th>
-                            <th>ทะเบียน</th>
-                            <th>เลขตัวถัง</th>
-                            <th>ประเภทรถ</th>
+                            <th>ข้อมูลลูกค้า</th>
+                            <th>ข้อมูลรถ</th>
                             <th>ค่า พรบ.</th>
                             <th>ภาษีรถ</th>
+                            <th>ค่าปรับภาษี</th>
                             <th>ACTION</th>
 
                         </tr>
@@ -58,13 +56,19 @@ $rs = mysqli_query($conn, $sql);
                             <tr>
                                 <td><?= $index ?></td>
                                 <td><?= $row['service_date'] ?></td>
-                                <td><?= $row['firstname'] ?> <?= $row['lastname'] ?></td>
-                                <td><?= $row['tel'] ?></td>
-                                <td><?= $row['car_char'] ?>-<?= $row['car_number'] ?> <?= $row['PROVINCE_NAME'] ?></td>
-                                <td><?= $row['car_chassis'] ?></td>
-                                <td><?= $row['category_car_name'] ?></td>
+                                <td>
+                                    <strong>ชื่อ : </strong> <?= $row['firstname'] ?> <?= $row['lastname'] ?><br>
+                                    <strong>โทร: </strong> <?= $row['tel'] ?> <br>
+                                </td>
+                                
+                                <td>
+                                    <strong>ทะเบียนรถ : </strong> <?= $row['car_char'] ?>-<?= $row['car_number'] ?> <?= $row['PROVINCE_NAME'] ?><br>
+                                    <strong>เลขตัวถัง  : </strong> <?= $row['car_chassis'] ?> <br>
+                                    <strong>ประเภทรถ : </strong> <?= $row['category_car_name'] ?> <br>
+                                </td>
                                 <td><?= number_format($row['price_atc']) ?></td>
-                                <td><?= number_format($row['price_car_tax']) ?></td>
+                                <td><?= number_format($row['price_car_tax_order']) ?></td>
+                                <td><?= number_format($row['price_tax_fine']) ?></td>
                                 <td>
                                     <a href="index.php?menu=atc-editForm&id=<?=$row['id_order_service']?>" class="btn btn-primary"> <i class="fa fa-cog"></i></a>
                                     <a href="index.php?menu=atc-delDB&id=<?=$row['id_order_service']?>" class="btn btn-danger" onclick="return confirm('ยืนยันการลบ')"> <i class="fa fa-trash"></i></a>
