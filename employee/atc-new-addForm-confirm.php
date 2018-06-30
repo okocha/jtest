@@ -32,7 +32,6 @@ $rs = mysqli_query($conn, $sql);
 $row = mysqli_fetch_array($rs);
 
 if ($row['category_car_title'] == 'รย.12') {
-    echo 'รย.12';
     if (check_year($car_reg_date) <= 5) {
         $price_check_car = 0;
     } else {
@@ -61,11 +60,49 @@ if ($row['category_car_title'] == 'รย.1') {
     $price_car_tax = $row['price_car_tax'];
 }
 
+$price_car_tax_owe = calculate_price_car_tax_owe($car_exp_date, $price_car_tax);
+
+
+
+
 
 $price_tax_fine = calculate_price_tax_fine($car_exp_date, $price_car_tax);
 $price_service = $row['price_service'];
 
-$total_price = $price_check_car + $price_atc + $price_car_tax + $price_service + $price_tax_fine + $price_service_express;
+$total_price = $price_check_car + $price_atc + $price_car_tax + $price_service + $price_tax_fine + $price_car_tax_owe + $price_service_express;
+
+function calculate_price_car_tax_owe($car_exp_date, $price_car_tax) {
+    $result = 0;
+
+    $total_year = check_year($car_exp_date);
+
+    $next_exp_date = date("Y") . '-' . date("m-d", strtotime($car_exp_date));
+    $date1 = date("Y-m-d", strtotime($next_exp_date));
+    $date2 = date("Y-m-d");
+
+    $datetime0 = date_create(date("Y-m-d", strtotime($car_exp_date)));
+
+    $datetime1 = date_create($date1);
+    $datetime2 = date_create($date2);
+
+    if ($datetime0->format('Y') < $datetime2->format('Y')) {
+
+        $interval = date_diff($datetime1, $datetime2);
+
+        $year = $interval->format('%y');
+        $month = $interval->format('$m');
+        $day = $interval->format('$d');
+        if ($month <= 2 || ($month == 3 && $day == 0)) {
+            if ($datetime1 > $datetime2) {
+                $total_year++;
+            }
+            $result = $price_car_tax * $total_year;
+        } else {
+            $result = $price_car_tax * $total_year;
+        }
+    }
+    return $result;
+}
 
 function check_year($car_reg_date) {
     $date1 = date("Y-m-d", strtotime($car_reg_date));
@@ -289,6 +326,7 @@ function calculate_cc_price_car_tax($car_cc, $car_reg_date) {
                             <td>ค่าตรวจสภาพรถ<small class="text-danger"> ( ปีที่ <?= check_year($car_reg_date) ?> )</small></td>
                             <td>ค่า พรบ.</td>
                             <td>ค่าภาษี</td>
+                            <td>ค่าภาษีย้อนหลัง</td>
                             <td>ค่าปรับภาษี</td>
                             <td>ค่าบริการต่อภาษี</td>
                             <td>ค่าบริการต่อภาษีด่วน</td>
@@ -300,7 +338,13 @@ function calculate_cc_price_car_tax($car_cc, $car_reg_date) {
                             <td> <?= number_format($price_check_car) ?> </td>
                             <td> <?= number_format($price_atc) ?> </td>
                             <td> <?= number_format($price_car_tax) ?> </td>
-                            <td> <?= number_format($price_tax_fine, 2) ?> </td>
+                            <td> <?= number_format($price_car_tax_owe) ?> </td>
+
+                            <td>
+                                <div class="btn btn-danger">
+                                    <?= number_format($price_tax_fine, 2) ?> 
+                                </div>
+                            </td>
                             <td> <?= number_format($price_service) ?> </td>
                             <td> <?= number_format($price_service_express) ?> </td>
                             <td> <?= number_format($total_price) ?> </td>
