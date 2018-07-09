@@ -83,7 +83,7 @@
                     <div class="form-group">
                         <label>ประเภทรถ</label>
                         <select name="id_category_car" class="form-control form-control-sm" required>
-                            <option value="0">---เลือกประเภทรถ---</option>
+                            <option value="">---เลือกประเภทรถ---</option>
                             <?php
                             $sql = "SELECT * FROM tb_category_car ORDER BY(category_car_name) ASC";
                             $rs = mysqli_query($conn, $sql);
@@ -104,7 +104,7 @@
                             <input type="text" class="form-control form-control-sm" name="car_number" placeholder="เลขทะเบียน" required> -
 
                             <select name="car_province_id"class="form-control form-control-sm" required>
-                                <option value="0">---เลือกจังหวัด---</option>
+                                <option value="">---เลือกจังหวัด---</option>
                                 <?php
                                 $sql = "SELECT * FROM tb_province";
                                 $rs = mysqli_query($conn, $sql);

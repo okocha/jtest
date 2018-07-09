@@ -378,6 +378,7 @@ function calculate_cc_price_car_tax($car_cc, $car_reg_date) {
                 <input type="hidden" name="car_chassis" value="<?= $car_chassis ?>">
 
                 <input type="hidden" name="price_car_tax" value="<?= $price_car_tax ?>">
+                <input type="hidden" name="price_car_tax_owe" value="<?= $price_car_tax_owe ?>">
 
                 <input type="hidden" name="price_tax_fine" value="<?= $price_tax_fine ?>">
 
