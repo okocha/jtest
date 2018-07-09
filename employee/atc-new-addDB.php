@@ -9,7 +9,7 @@ $tel = $_POST['tel'];
 $price_service_express = $_POST['price_service_express'];
 
 $car_reg_date = $_POST['car_reg_date'];
-$car_exp_date = $_POSt['car_exp_date'];
+$car_exp_date = $_POST['car_exp_date'];
 
 $id_category_car = $_POST['id_category_car'];
 

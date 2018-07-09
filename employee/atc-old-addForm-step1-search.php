@@ -56,7 +56,10 @@ $rs = mysqli_query($conn, $sql);
                                 <td><?= $row['category_car_name'] ?></td>
                                 <td>
 
-                                    <form action="index.php?menu=atc-old-addForm-step2-confirm&id=<?= $row['id_order_service'] ?>" method="POST">
+                                    <!--<form action="index.php?menu=atc-old-addForm-step2-addForm&id=<?= $row['id_order_service'] ?>" method="POST">-->
+                                    <form action="index.php" method="GET">
+                                        <input type="hidden" name="menu" value="atc-old-addForm-step2-addForm">  
+
                                         <input type="hidden" name="id_order_service" value="<?= $row['id_order_service'] ?>">
                                         <input type="hidden" name="id_car" value="<?= $row['id_car'] ?>">
                                         <input type="hidden" name="id_customer" value="<?= $row['id_customer'] ?>">
@@ -68,12 +71,14 @@ $rs = mysqli_query($conn, $sql);
                                         <input type="hidden" name="address" value="<?= $row['address'] ?>">
                                         <input type="hidden" name="tel" value="<?= $row['tel'] ?>">
                                         <input type="hidden" name="car_reg_date" value="<?= $row['car_reg_date'] ?>">
+                                        <input type="hidden" name="car_exp_date" value="<?= $row['car_exp_date'] ?>">
                                         <input type="hidden" name="id_category_car" value="<?= $row['id_category_car'] ?>:<?= $row['category_car_name'] ?>">
                                         <input type="hidden" name="car_char" value="<?= $row['car_char'] ?>">
                                         <input type="hidden" name="car_number" value="<?= $row['car_number'] ?>">
                                         <input type="hidden" name="car_province_id" value=" <?= $row['car_province_id'] ?>:<?= $row['PROVINCE_NAME'] ?>">
                                         <input type="hidden" name="car_brand" value="<?= $row['car_brand'] ?>">
                                         <input type="hidden" name="car_model" value="<?= $row['car_model'] ?>">
+                                        <input type="hidden" name="car_cc" value="<?= $row['car_cc'] ?>">
                                         <input type="hidden" name="car_chassis" value="<?= $row['car_chassis'] ?>">
 
                                         <button type="submit" class="btn btn-info"> <i class="fa fa-user"></i> เลือก</button>

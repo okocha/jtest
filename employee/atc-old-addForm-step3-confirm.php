@@ -1,4 +1,8 @@
 <?php
+$id_order_service = $_REQUEST['id_order_service'];
+$id_car = $_REQUEST['id_car'];
+$id_customer = $_REQUEST['id_customer'];
+
 $id_card_number = $_POST['id_card_number'];
 $firstname = $_POST['firstname'];
 $lastname = $_POST['lastname'];
@@ -356,7 +360,11 @@ function calculate_cc_price_car_tax($car_cc, $car_reg_date) {
         </div>
 
         <div class="text-center">
-            <form action="index.php?menu=atc-new-addDB" method="post">
+            <form action="index.php?menu=atc-old-addform-step4-DB" method="post">
+                
+                <input type="hidden" name="id_order_service" value="<?=$id_order_service?>">
+                <input type="hidden" name="id_car" value="<?=$id_car?>">
+                <input type="hidden" name="id_customer" value="<?=$id_customer?>">
 
                 <input type="hidden" name="id_card_number" value="<?= $id_card_number ?>">
                 <input type="hidden" name="firstname" value="<?= $firstname ?>">
@@ -390,6 +398,3 @@ function calculate_cc_price_car_tax($car_cc, $car_reg_date) {
 
     </div>
 </div>
-
-
-<h1>HELLO</h1>
