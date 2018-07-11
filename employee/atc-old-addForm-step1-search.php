@@ -13,7 +13,7 @@ WHERE
     tb_car.id_category_car = tb_category_car.id AND
     tb_car.id_customer = tb_customer.id AND
     tb_car.car_province_id = tb_province.PROVINCE_ID
-GROUP BY(tb_order_service.id)
+GROUP BY(tb_customer.id)
 ORDER BY(tb_order_service.service_date) DESC";
 
 $rs = mysqli_query($conn, $sql);
