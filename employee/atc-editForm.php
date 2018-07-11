@@ -66,77 +66,78 @@ $row = mysqli_fetch_array($rs);
                         <select name="sex" class="form-control form-control-sm" required>
                             <option value="ชาย" <?= $men_selected ?>>ชาย</option>
                             <option value="หญิง" <?= $women_selected ?>>หญิง</option>
-                    </select> 
-                    <div class="form-group">
-                        <label>ที่อยู่</label>
-                        <textarea name="address" class="form-control form-control-sm" required><?= $row['address'] ?></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>เบอร์โทรศัพท์</label>
-                        <input type="text" class="form-control form-control-sm" name="tel" value="<?= $row['tel'] ?>"required> 
+                        </select> 
+                        <div class="form-group">
+                            <label>ที่อยู่</label>
+                            <textarea name="address" class="form-control form-control-sm" required><?= $row['address'] ?></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>เบอร์โทรศัพท์</label>
+                            <input type="text" class="form-control form-control-sm" name="tel" value="<?= $row['tel'] ?>"required> 
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="col-md-12">
-        <div class="card">
-            <div class="card-header text-white bg-warning">
-                รายละเอียดรถ
-            </div>
-            <div class="card-body">
-                <div class="form-group">
+        <div class="col-md-12">
 
-                    <label>วันจดทะเบียน</label>
-                    <div class="form-inline">
-                        <input type="date" class="form-control form-control-sm" name="car_reg_date"value="<?= $row['car_reg_date'] ?>"required> 
+            <div class="card">
+                <div class="card-header text-white bg-primary">
+                    ค่าบริการต่อภาษี
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+
+                        <label>ต่อทะเบียนด่วน</label>
+                        <div class="form-group">
+                            <input type="number" class="form-control form-control-sm" name="price_service_express" value="<?=$row['price_service_express']?>" required> 
+                        </div>
                     </div>
+                    
+
                 </div>
-                <div class="form-group">
-                    <label>ประเภทรถ</label>
-                    <select name="id_category_car" class="form-control form-control-sm" required>
-                        <option value="0">---เลือกประเภทรถ---</option>
-                        <?php
-                        $sql2 = "SELECT * FROM tb_category_car ORDER BY(category_car_name) ASC";
-                        $rs2 = mysqli_query($conn, $sql2);
 
-                        while ($row2 = mysqli_fetch_array($rs2)) {
-                            if ($row['id_category_car'] == $row2['id']) {
-                                ?>
-                                <option value="<?= $row2['id'] ?>:<?= $row2['category_car_name'] ?>" selected> <?= $row2['category_car_name'] ?></option>    
+            </div>
 
-                                <?php
-                            } else {
-                                ?>
-                                <option value="<?= $row2['id'] ?>:<?= $row2['category_car_name'] ?>"> <?= $row2['category_car_name'] ?></option>    
+        </div>
 
-                                <?php
-                            }
-                        }
-                        ?>
-                    </select>
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header text-white bg-warning">
+                    รายละเอียดรถ
                 </div>
-                <div class="form-group">
-                    <label>เลขทะเบียนรถ</label>
-                    <div class="form-inline">
-                        <input type="text" class="form-control form-control-sm" name="car_char" value="<?= $row['car_char'] ?>"placeholder="ตัวอักษร" required> -
-                        <input type="text" class="form-control form-control-sm" name="car_number" value="<?= $row['car_number'] ?>"placeholder="เลขทะเบียน" required> -
+                <div class="card-body">
+                    <div class="form-group">
 
-                        <select name="car_province_id"class="form-control form-control-sm" required>
-                            <option value="0">---เลือกจังหวัด---</option>
+                        <label>วันจดทะเบียน</label>
+                        <div class="form-inline">
+                            <input type="date" class="form-control form-control-sm" name="car_reg_date"value="<?= $row['car_reg_date'] ?>"required> 
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <label>วันหมดภาษี(ล่าสุด)</label>
+                        <div class="form-inline">
+                            <input type="date" class="form-control form-control-sm" name="car_exp_date" value="<?= $row['car_exp_date'] ?>" required> 
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>ประเภทรถ</label>
+                        <select name="id_category_car" class="form-control form-control-sm" required>
+                            <option value="0">---เลือกประเภทรถ---</option>
                             <?php
-                            $sql3 = "SELECT * FROM tb_province";
-                            $rs3 = mysqli_query($conn, $sql3);
+                            $sql2 = "SELECT * FROM tb_category_car ORDER BY(category_car_name) ASC";
+                            $rs2 = mysqli_query($conn, $sql2);
 
-                            while ($row3 = mysqli_fetch_array($rs3)) {
-                                if ($row ['car_province_id'] == $row3['PROVINCE_ID']) {
+                            while ($row2 = mysqli_fetch_array($rs2)) {
+                                if ($row['id_category_car'] == $row2['id']) {
                                     ?>
-                                    <option value="<?= $row3['PROVINCE_ID'] ?>:<?= $row3['PROVINCE_NAME'] ?>" selected> <?= $row3['PROVINCE_NAME'] ?></option>    
+                                    <option value="<?= $row2['id'] ?>:<?= $row2['category_car_name'] ?>" selected> <?= $row2['category_car_name'] ?></option>    
 
                                     <?php
                                 } else {
                                     ?>
-                                    <option value="<?= $row3['PROVINCE_ID'] ?>:<?= $row3['PROVINCE_NAME'] ?>"> <?= $row3['PROVINCE_NAME'] ?></option>    
+                                    <option value="<?= $row2['id'] ?>:<?= $row2['category_car_name'] ?>"> <?= $row2['category_car_name'] ?></option>    
 
                                     <?php
                                 }
@@ -144,30 +145,62 @@ $row = mysqli_fetch_array($rs);
                             ?>
                         </select>
                     </div>
+                    <div class="form-group">
+                        <label>เลขทะเบียนรถ</label>
+                        <div class="form-inline">
+                            <input type="text" class="form-control form-control-sm" name="car_char" value="<?= $row['car_char'] ?>"placeholder="ตัวอักษร" required> -
+                            <input type="text" class="form-control form-control-sm" name="car_number" value="<?= $row['car_number'] ?>"placeholder="เลขทะเบียน" required> -
+
+                            <select name="car_province_id"class="form-control form-control-sm" required>
+                                <option value="0">---เลือกจังหวัด---</option>
+                                <?php
+                                $sql3 = "SELECT * FROM tb_province";
+                                $rs3 = mysqli_query($conn, $sql3);
+
+                                while ($row3 = mysqli_fetch_array($rs3)) {
+                                    if ($row ['car_province_id'] == $row3['PROVINCE_ID']) {
+                                        ?>
+                                        <option value="<?= $row3['PROVINCE_ID'] ?>:<?= $row3['PROVINCE_NAME'] ?>" selected> <?= $row3['PROVINCE_NAME'] ?></option>    
+
+                                        <?php
+                                    } else {
+                                        ?>
+                                        <option value="<?= $row3['PROVINCE_ID'] ?>:<?= $row3['PROVINCE_NAME'] ?>"> <?= $row3['PROVINCE_NAME'] ?></option>    
+
+                                        <?php
+                                    }
+                                }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>ยี่ห้อรถ</label>
+                        <input type="text" class="form-control form-control-sm" name="car_brand" value="<?= $row['car_brand'] ?>"required> 
+                    </div>
+                    <div class="form-group">
+                        <label>รุ่นโมเดลรถ</label>
+                        <input type="text" class="form-control form-control-sm" name="car_model" value="<?= $row['car_model'] ?>"required> 
+                    </div>
+                    <div class="form-group">
+                        <label>CC รถ</label>
+                        <input type="number" class="form-control form-control-sm" name="car_cc" value="<?= $row['car_cc'] ?>" required> 
+                    </div>
+                    <div class="form-group">
+                        <label>เลขตัวถังรถ</label>
+                        <input type="text" class="form-control form-control-sm" name="car_chassis" value="<?= $row['car_chassis'] ?>"required> 
+                    </div>
+
                 </div>
-                <div class="form-group">
-                    <label>ยี่ห้อรถ</label>
-                    <input type="text" class="form-control form-control-sm" name="car_brand" value="<?= $row['car_brand'] ?>"required> 
-                </div>
-                <div class="form-group">
-                    <label>รุ่นโมเดลรถ</label>
-                    <input type="text" class="form-control form-control-sm" name="car_model" value="<?= $row['car_model'] ?>"required> 
-                </div>
-                <div class="form-group">
-                    <label>เลขตัวถังรถ</label>
-                    <input type="text" class="form-control form-control-sm" name="car_chassis" value="<?= $row['car_chassis'] ?>"required> 
-                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="text-center">
+                <a href="index.php?menu=atc-show" class="btn btn-danger">ยกเลิก</a>
+                <button type="submit" class="btn btn-success">ถัดไป</button>
 
             </div>
         </div>
     </div>
-
-    <div class="col-md-12">
-        <div class="text-center">
-            <a href="index.php?menu=atc-show" class="btn btn-danger">ยกเลิก</a>
-            <button type="submit" class="btn btn-success">บันทึก</button>
-            
-        </div>
-    </div>
-</div>
 </form>
