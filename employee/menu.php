@@ -10,12 +10,23 @@
             <li class="nav-item">
                 <a class="nav-link" href="index.php?menu=home">Home</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="index.php?menu=atc-show">ต่อ พรบ.&ทะเบียน</a>
+            
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                พรบ.&ทะเบียน
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="index.php?menu=atc-show">บันทึกข้อมูล พรบ.& ทะเบียน</a>
+                <a class="dropdown-item" href="index.php?menu=progress-atc-show">ดำเนินการ พรบ.& ทะเบียน</a>
+                <a class="dropdown-item" href="index.php?menu=success-atc-show">เสร็จสิ้นการต่อ พรบ.& ทะเบียน</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="index.php?menu=done-atc-show">รายการปิดการขายทั้งหมด</a>
+                </div>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="index.php?menu=test">Test</a>
             </li>
+            
             
 
             <li class="nav-item dropdown">
