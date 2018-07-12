@@ -86,5 +86,3 @@ $rs = mysqli_query($conn, $sql);
 
         </div>
     </div>
-
-    <!--<h1 class="text-danger"> เดียวจะกลับมาทำ work_status</h1>-->

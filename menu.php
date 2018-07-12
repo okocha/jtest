@@ -11,6 +11,9 @@
                 <a class="nav-link" href="index.php?menu=home">Home</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="index.php?menu=home">คำนวนค่า พรบ.& ภาษี</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="index.php?menu=test">Test</a>
             </li>
             
