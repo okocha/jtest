@@ -7,22 +7,22 @@
                 <li data-target="#demo" data-slide-to="2"></li>
             </ul>
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="assets/img/banner1.jpg" alt="Los Angeles" width="1100" height="500">
+                <div class="carousel-item active text-center">
+                    <img src="assets/img/banner1.png" alt="Los Angeles" width="600" height="500">
                     <div class="carousel-caption">
                         <h3>Los Angeles</h3>
                         <p>We had such a great time in LA!</p>
                     </div>   
                 </div>
-                <div class="carousel-item">
-                    <img src="assets/img/banner2.jpg" alt="Chicago" width="1100" height="500">
+                <div class="carousel-item text-center">
+                    <img src="assets/img/banner2.png" alt="Chicago" width="600" height="500">
                     <div class="carousel-caption">
                         <h3>Chicago</h3>
                         <p>Thank you, Chicago!</p>
                     </div>   
                 </div>
-                <div class="carousel-item">
-                    <img src="assets/img/banner3.jpg" alt="New York" width="1100" height="500">
+                <div class="carousel-item text-center">
+                    <img src="assets/img/banner3.png" alt="New York" width="600" height="500">
                     <div class="carousel-caption">
                         <h3>New York</h3>
                         <p>We love the Big Apple!</p>

@@ -23,7 +23,9 @@ $rs = mysqli_query($conn, $sql);
 <div class="row">
 
     <div class="col-md-12">
-
+        <div class="text-right">
+            <a href="process-atc-show-print.php" class="btn btn-dark" target="_blank">Print PDF</a>
+        </div>
         
         <div class="card">
             <div class="card-header text-white bg-warning">
@@ -38,9 +40,9 @@ $rs = mysqli_query($conn, $sql);
                             <th>วันที่มาใช้บริการ</th>
                             <th>ข้อมูลลูกค้า</th>
                             <th>ข้อมูลรถ</th>
-                            <th>ค่า พรบ.</th>
-                            <th>ภาษีรถ</th>
+                            <th>ค่าภาษีรถ</th>
                             <th>ค่าปรับภาษี</th>
+                            <th>รวม</th>
                             <th>ACTION</th>
 
                         </tr>
@@ -63,9 +65,9 @@ $rs = mysqli_query($conn, $sql);
                                     <strong>เลขตัวถัง  : </strong> <?= $row['car_chassis'] ?> <br>
                                     <strong>ประเภทรถ : </strong> <?= $row['category_car_name'] ?> <br>
                                 </td>
-                                <td><?= number_format($row['price_atc']) ?></td>
                                 <td><?= number_format($row['price_car_tax_order']) ?></td>
                                 <td><?= number_format($row['price_tax_fine']) ?></td>
+                                <td><?= number_format($row['price_car_tax_order']+$row['price_tax_fine']) ?></td>
                                 <td>
                                     <a href="index.php?menu=progress-atc-work-status-update&id=<?=$row['id_order_service']?>" class="btn btn-success">
                                         <i class="fa fa-check"></i> ต่อแล้ว
@@ -86,3 +88,4 @@ $rs = mysqli_query($conn, $sql);
 
         </div>
     </div>
+</div>

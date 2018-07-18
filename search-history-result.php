@@ -1,28 +1,38 @@
 <?php
-$sql = "
-SELECT 
-	tb_customer.*, 
-    tb_category_car.*,
-    tb_car.*,
-    tb_order_service.*,
-    tb_province.*,
-    tb_order_service.id AS id_order_service
-FROM
-	tb_customer, tb_category_car, tb_car, tb_order_service, tb_province
-WHERE
-	tb_order_service.id_car = tb_car.id AND
-    tb_car.id_category_car = tb_category_car.id AND
-    tb_car.id_customer = tb_customer.id AND
-    tb_car.car_province_id = tb_province.PROVINCE_ID AND
-    tb_order_service.work_status = 'ปิดการขาย'
-GROUP BY(tb_order_service.id)
-ORDER BY(tb_order_service.id) DESC
-";
+$car_char = $_REQUEST['car_char'];;
+$car_number = $_REQUEST['car_number'];
 
+$car_province_id = explode(':', $_REQUEST['car_province_id'])[0];
+$car_province_name = explode(':', $_REQUEST['car_province_id'])[1];
+
+$id_card_number = $_REQUEST['id_card_number'];
+
+$sql = "
+    SELECT 
+        tb_customer.*, 
+        tb_category_car.*,
+        tb_car.*,
+        tb_order_service.*,
+        tb_province.*,
+        tb_order_service.id AS id_order_service
+    FROM
+        tb_customer, tb_category_car, tb_car, tb_order_service, tb_province
+    WHERE
+        tb_order_service.id_car = tb_car.id AND
+        tb_car.id_category_car = tb_category_car.id AND
+        tb_car.id_customer = tb_customer.id AND
+        tb_car.car_province_id = tb_province.PROVINCE_ID AND 
+        tb_car.car_char = '$car_char' AND 
+        tb_car.car_number = '$car_number' AND
+        tb_car.car_province_id = '$car_province_id' AND 
+        tb_customer.id_card_number = '$id_card_number'
+    GROUP BY(tb_order_service.id)
+    ORDER BY(tb_order_service.id) DESC
+";
 $rs = mysqli_query($conn, $sql);
 ?>
 
-<h1>รายการปิดการขาย พรบ. และ ทะเบียน ของลูกค้าทั้งหมด</h1>
+<h1>ผลการค้นหาทะเบียนรถ</h1>
 
 <div class="row">
     <div class="col-md-12">
@@ -30,7 +40,7 @@ $rs = mysqli_query($conn, $sql);
         
 
         <div class="card">
-            <div class="card-header">
+            <div class="card-header text-white bg-primary">
                 รายการ พรบ. และ ทะเบียน ของลูกค้า
             </div>
             <div class="card-body">

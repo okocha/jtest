@@ -42,7 +42,7 @@
             </li>
 
         </ul>
-        <?php if(isset($_SESSION['LOGIN_ADMIN'])){ ?>
+        <?php if(isset($_SESSION['LOGIN_EMPLOYEE'])){ ?>
 
         <a class="btn btn-outline-warning" href="index.php?menu=logout" onclick="return confirm('ต้องการออกจากระบบ?')">Logout</a>
 
