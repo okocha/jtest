@@ -4,7 +4,6 @@ error_reporting(0);
 
 include 'check-session.php';
 include '../connect/connect.php';
-
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +18,7 @@ include '../connect/connect.php';
         <link rel="stylesheet" href="../assets/css/sticky-footer-navbar.css">
 
         <link rel="stylesheet" href="../assets/datatable/jquery.dataTables.min.css">
-        
+
         <link rel="stylesheet" href="../assets/font-awesome/css/font-awesome.min.css">
 
     </head>
@@ -27,7 +26,7 @@ include '../connect/connect.php';
 
         <!-- Top Menu -->
         <header>
-            <?php include 'menu.php';?>
+            <?php include 'menu.php'; ?>
         </header>
 
         <div class="container">
@@ -35,11 +34,11 @@ include '../connect/connect.php';
             if (isset($_REQUEST['menu'])) {
                 include $_REQUEST['menu'] . '.php';
             } else {
-            ?>
-            <script type="text/javascript">
-                window.location = 'index.php?menu=home';
-            </script>
-            <?php
+                ?>
+                <script type="text/javascript">
+                    window.location = 'index.php?menu=home';
+                </script>
+                <?php
             }
             ?>
         </div>
@@ -59,34 +58,48 @@ include '../connect/connect.php';
         <script src="../assets/bootstrap/dist/js/bootstrap.js"></script>
         <script src="../assets/datatable/jquery.dataTables.min.js"></script>
 
-        
+
         <script type="text/javascript">
 
-            $(document).ready(function() {
-                $('#dataTable').DataTable();
-                $('#dataTable1').DataTable();
-                $('#dataTable2').DataTable();
-                $('#dataTable3').DataTable();
-            } );
+                $(document).ready(function () {
+                    $('#dataTable').DataTable();
+                    $('#dataTable1').DataTable();
+                    $('#dataTable2').DataTable();
+                    $('#dataTable3').DataTable();
+                });
 
         </script>
-        
+
 
         <!-- my custom -->
 
         <!-- code active menu by me-->
         <script type="text/javascript">
-        $(document).ready(function () {
-            var path = window.location.href.split("/").pop();
+            $(document).ready(function () {
+                var path = window.location.href.split("/").pop();
 
-            path = path.split("&");
+                path = path.split("&");
 
-            var target = $('ul li a[href="' + path[0] + '"]');
+                var target = $('ul li a[href="' + path[0] + '"]');
 
-            //target.addClass('active');
-            target.parent().addClass('active');
-        });
+                //target.addClass('active');
+                target.parent().addClass('active');
+            });
         </script>
+        <script type="text/javascript">
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $('#ex_img').attr('src', e.target.result);
+                    }
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+        </script>
+
 
     </body>
 </html>

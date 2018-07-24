@@ -17,6 +17,9 @@
                 <a class="nav-link" href="index.php?menu=search-history-form">ค้นหาทะเบียนรถ</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="index.php?menu=promotion">Promotion</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="index.php?menu=test">Test</a>
             </li>
             

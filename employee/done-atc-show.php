@@ -73,7 +73,20 @@ $rs = mysqli_query($conn, $sql);
                                 <strong>ค่าบริการต่อภาษี: </strong> <?=number_format($row['price_service'])?> <br>
                                 <strong>ค่าบริการต่อภาษีด่วน: </strong> <?=number_format($row['price_service_express'])?>
                             </td>
-                            <td> <?=number_format($total_price)?> </td>
+                            <td>
+                                <?php
+                                if($total_price <=999 ){
+                                   ?>
+                                <p class="text-primary"><?=number_format($total_price)?> </p>
+                                <?php
+                                }else{
+                                ?> 
+                                <p class="text-success"><?=number_format($total_price)?> </p>
+                                <?php
+                                }
+                                ?>
+                                
+                            </td>
                         </tr>
                         <?php 
                             $index++;

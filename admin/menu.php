@@ -14,6 +14,9 @@
                 <a class="nav-link" href="index.php?menu=category-car-show">ประเภทรถ</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="index.php?menu=promotion-show">จัดการโปรโมชั่น</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="index.php?menu=test">Test</a>
             </li>
             
