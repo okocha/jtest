@@ -17,11 +17,11 @@
                 <a class="nav-link" href="index.php?menu=promotion-show">จัดการโปรโมชั่น</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="index.php?menu=test">Test</a>
+                <a class="nav-link" href="index.php?menu=employee-show">จัดการพนักงาน</a>
             </li>
             
 
-            <li class="nav-item dropdown">
+<!--            <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Dropdown Test
                 </a>
@@ -31,7 +31,7 @@
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#">Something else here</a>
                 </div>
-            </li>
+            </li>-->
 
         </ul>
         <?php if(isset($_SESSION['LOGIN_ADMIN'])){ ?>

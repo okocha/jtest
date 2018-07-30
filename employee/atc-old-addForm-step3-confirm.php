@@ -345,9 +345,7 @@ function calculate_cc_price_car_tax($car_cc, $car_reg_date) {
                             <td> <?= number_format($price_car_tax_owe) ?> </td>
 
                             <td>
-                                <div class="btn btn-danger">
                                     <?= number_format($price_tax_fine, 2) ?> 
-                                </div>
                             </td>
                             <td> <?= number_format($price_service) ?> </td>
                             <td> <?= number_format($price_service_express) ?> </td>

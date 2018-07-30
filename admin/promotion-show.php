@@ -1,4 +1,4 @@
-<h1>จัดการโปรโมชั่น</h1>
+<h1>จัดการข่าวสารโปรโมชั่น</h1>
 <div class="row" style="background-color: ">
     <div class="col-md-12">
         <div class="text-right">
@@ -7,7 +7,7 @@
         
         <div class="card">
   <div class="card-header">
-    จัดการข่าวสาร
+    จัดการข่าวสารโปรโมชั่น
   </div>
   <div class="card-body">
     

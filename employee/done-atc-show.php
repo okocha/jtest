@@ -75,15 +75,15 @@ $rs = mysqli_query($conn, $sql);
                             </td>
                             <td>
                                 <?php
-                                if($total_price <=999 ){
+//                                if($total_price <=999 ){
                                    ?>
-                                <p class="text-primary"><?=number_format($total_price)?> </p>
+                              <?=number_format($total_price)?> 
                                 <?php
-                                }else{
+//                                }else{
                                 ?> 
-                                <p class="text-success"><?=number_format($total_price)?> </p>
+<!--                                <p class="text-success"><?=number_format($total_price)?> </p>-->
                                 <?php
-                                }
+//                                }
                                 ?>
                                 
                             </td>

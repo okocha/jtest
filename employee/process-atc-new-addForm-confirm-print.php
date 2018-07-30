@@ -1,4 +1,6 @@
 <?php
+include '../connect/connect.php';
+error_reporting(0);
 $id_card_number = $_POST['id_card_number'];
 $firstname = $_POST['firstname'];
 $lastname = $_POST['lastname'];
@@ -10,7 +12,9 @@ $price_service_express = $_POST['price_service_express'];
 
 $car_reg_date = $_POST['car_reg_date'];
 $car_exp_date = $_POST['car_exp_date'];
-
+// 2:รย.1 รถเก๋ง
+// mrt:bts:kfc:mk
+// mrt,bts,kfc,mk
 $id_category_car = explode(':', $_POST['id_category_car'])[0];
 $name_category_car = explode(':', $_POST['id_category_car'])[1];
 
@@ -203,42 +207,34 @@ function calculate_cc_price_car_tax($car_cc, $car_reg_date) {
     }
 }
 ?>
-<h1>พรบ. และ ทะเบียน ของลูกค้า</h1>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title> &nbsp; </title>
 
-<div class="row">
+        <link rel="stylesheet" href="../assets/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../assets/css/sticky-footer-navbar.css">
+
+        <link rel="stylesheet" href="../assets/datatable/jquery.dataTables.min.css">
+        
+        
+        <link rel="stylesheet" href="../assets/font-awesome/css/font-awesome.min.css">
+
+    </head>
+    <body>
+        <div class="row">
     <div class="col-md-12">
-            <div class="text-right">
-            <form action="process-atc-new-addForm-confirm-print.php" method="post" target="_blank">
-
-                <input type="hidden" name="id_card_number" value="<?= $id_card_number ?>">
-                <input type="hidden" name="firstname" value="<?= $firstname ?>">
-                <input type="hidden" name="lastname" value="<?= $lastname ?>">
-                <input type="hidden" name="sex" value="<?= $sex ?>">
-                <input type="hidden" name="address" value="<?= $address ?>">
-                <input type="hidden" name="tel" value="<?= $tel ?>">
-                <input type="hidden" name="price_service_express" value="<?= $price_service_express ?>">
-                <input type="hidden" name="car_reg_date" value="<?= $car_reg_date ?>">
-                <input type="hidden" name="car_exp_date" value="<?= $car_exp_date ?>">
-                <input type="hidden" name="id_category_car" value="<?= $id_category_car ?>:<?=$name_category_car?>">
-                <input type="hidden" name="car_char" value="<?= $car_char ?>">
-                <input type="hidden" name="car_number" value="<?= $car_number ?>">
-
-                <input type="hidden" name="car_province_id" value="<?= $car_province_id ?>">
-                <input type="hidden" name="car_brand" value="<?= $car_brand ?>">
-                <input type="hidden" name="car_model" value="<?= $car_model ?>">
-                <input type="hidden" name="car_cc" value="<?= $car_cc ?>">
-                <input type="hidden" name="car_chassis" value="<?= $car_chassis ?>">
-
-                <input type="hidden" name="price_car_tax" value="<?= $price_car_tax ?>">
-                <input type="hidden" name="price_car_tax_owe" value="<?= $price_car_tax_owe ?>">
-
-                <input type="hidden" name="price_tax_fine" value="<?= $price_tax_fine ?>">
-
-                <button type="submit" class="btn btn-dark">Print PDF</button>
-            </form>
+        <div class="text-center">
+            <h4>ใบรับฝากต่อทะเบียนรถ
+                สถานตรวจสภาพรถท่าอุเทนบริการ
+            </h4>
+            
         </div>
         <div class="card">
-            <div class="card-header text-white bg-info">
+            <div class="card-header">
                 รายละเอียดลูกค้า
             </div>
             <div class="card-body">
@@ -272,7 +268,7 @@ function calculate_cc_price_car_tax($car_cc, $car_reg_date) {
         </div>
 
         <div class="card">
-            <div class="card-header text-white bg-warning">
+            <div class="card-header">
                 รายละเอียดรถ
             </div>
             <div class="card-body">
@@ -344,7 +340,7 @@ function calculate_cc_price_car_tax($car_cc, $car_reg_date) {
         </div>
 
         <div class="card">
-            <div class="card-header text-white bg-primary">
+            <div class="card-header">
                 รายละเอียดราคา
             </div>
             <div class="card-body">
@@ -382,38 +378,12 @@ function calculate_cc_price_car_tax($car_cc, $car_reg_date) {
             </div>
         </div>
 
-        <div class="text-center">
-            <form action="index.php?menu=atc-new-addDB" method="post">
-
-                <input type="hidden" name="id_card_number" value="<?= $id_card_number ?>">
-                <input type="hidden" name="firstname" value="<?= $firstname ?>">
-                <input type="hidden" name="lastname" value="<?= $lastname ?>">
-                <input type="hidden" name="sex" value="<?= $sex ?>">
-                <input type="hidden" name="address" value="<?= $address ?>">
-                <input type="hidden" name="tel" value="<?= $tel ?>">
-                <input type="hidden" name="price_service_express" value="<?= $price_service_express ?>">
-                <input type="hidden" name="car_reg_date" value="<?= $car_reg_date ?>">
-                <input type="hidden" name="car_exp_date" value="<?= $car_exp_date ?>">
-                <input type="hidden" name="id_category_car" value="<?= $id_category_car ?>">
-                <input type="hidden" name="car_char" value="<?= $car_char ?>">
-                <input type="hidden" name="car_number" value="<?= $car_number ?>">
-
-                <input type="hidden" name="car_province_id" value="<?= $car_province_id ?>">
-                <input type="hidden" name="car_brand" value="<?= $car_brand ?>">
-                <input type="hidden" name="car_model" value="<?= $car_model ?>">
-                <input type="hidden" name="car_cc" value="<?= $car_cc ?>">
-                <input type="hidden" name="car_chassis" value="<?= $car_chassis ?>">
-
-                <input type="hidden" name="price_car_tax" value="<?= $price_car_tax ?>">
-                <input type="hidden" name="price_car_tax_owe" value="<?= $price_car_tax_owe ?>">
-
-                <input type="hidden" name="price_tax_fine" value="<?= $price_tax_fine ?>">
-
-
-                <input type="button" value="ยกเลิก" class="btn btn-danger" onclick="history.back()">
-                <button type="submit" class="btn btn-success">บันทึก</button>
-            </form>
-        </div>
-
     </div>
 </div>
+
+
+<script type="text/javascript">
+      window.onload = function() { window.print(); }
+</script>
+</body>
+</html>

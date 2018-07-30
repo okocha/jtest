@@ -211,7 +211,36 @@ function calculate_cc_price_car_tax($car_cc, $car_reg_date) {
 
 <div class="row">
     <div class="col-md-12">
+        <div class="text-right">
+            <form action="process-atc-new-addForm-confirm-print.php" method="post" target="_blank">
 
+                <input type="hidden" name="id_card_number" value="<?= $id_card_number ?>">
+                <input type="hidden" name="firstname" value="<?= $firstname ?>">
+                <input type="hidden" name="lastname" value="<?= $lastname ?>">
+                <input type="hidden" name="sex" value="<?= $sex ?>">
+                <input type="hidden" name="address" value="<?= $address ?>">
+                <input type="hidden" name="tel" value="<?= $tel ?>">
+                <input type="hidden" name="price_service_express" value="<?= $price_service_express ?>">
+                <input type="hidden" name="car_reg_date" value="<?= $car_reg_date ?>">
+                <input type="hidden" name="car_exp_date" value="<?= $car_exp_date ?>">
+                <input type="hidden" name="id_category_car" value="<?= $id_category_car ?>:<?= $name_category_car ?>">
+                <input type="hidden" name="car_char" value="<?= $car_char ?>">
+                <input type="hidden" name="car_number" value="<?= $car_number ?>">
+
+                <input type="hidden" name="car_province_id" value="<?= $car_province_id ?>">
+                <input type="hidden" name="car_brand" value="<?= $car_brand ?>">
+                <input type="hidden" name="car_model" value="<?= $car_model ?>">
+                <input type="hidden" name="car_cc" value="<?= $car_cc ?>">
+                <input type="hidden" name="car_chassis" value="<?= $car_chassis ?>">
+
+                <input type="hidden" name="price_car_tax" value="<?= $price_car_tax ?>">
+                <input type="hidden" name="price_car_tax_owe" value="<?= $price_car_tax_owe ?>">
+
+                <input type="hidden" name="price_tax_fine" value="<?= $price_tax_fine ?>">
+
+                <button type="submit" class="btn btn-dark">Print PDF</button>
+            </form>
+        </div>
         <div class="card">
             <div class="card-header text-white bg-info">
                 รายละเอียดลูกค้า
@@ -345,9 +374,7 @@ function calculate_cc_price_car_tax($car_cc, $car_reg_date) {
                             <td> <?= number_format($price_car_tax_owe) ?> </td>
 
                             <td>
-                                <div class="btn btn-danger">
-                                    <?= number_format($price_tax_fine, 2) ?> 
-                                </div>
+                                <?= number_format($price_tax_fine, 2) ?> 
                             </td>
                             <td> <?= number_format($price_service) ?> </td>
                             <td> <?= number_format($price_service_express) ?> </td>
@@ -361,10 +388,10 @@ function calculate_cc_price_car_tax($car_cc, $car_reg_date) {
 
         <div class="text-center">
             <form action="index.php?menu=atc-editDB" method="post">
-                
-                <input type="hidden" name="id_order_service" value="<?=$id_order_service?>">
-                <input type="hidden" name="id_car" value="<?=$id_car?>">
-                <input type="hidden" name="id_customer" value="<?=$id_customer?>">
+
+                <input type="hidden" name="id_order_service" value="<?= $id_order_service ?>">
+                <input type="hidden" name="id_car" value="<?= $id_car ?>">
+                <input type="hidden" name="id_customer" value="<?= $id_customer ?>">
 
                 <input type="hidden" name="id_card_number" value="<?= $id_card_number ?>">
                 <input type="hidden" name="firstname" value="<?= $firstname ?>">

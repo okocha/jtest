@@ -50,7 +50,9 @@ $rs = mysqli_query($conn, $sql);
                     <tbody>
                         <?php
                         $index = 1;
+                        $total_all=0;
                         while ($row = mysqli_fetch_array($rs)) {
+                            $total_all=$total_all + ($row['price_car_tax_order']+$row['price_tax_fine']);
                             ?>
                             <tr>
                                 <td><?= $index ?></td>
@@ -82,6 +84,14 @@ $rs = mysqli_query($conn, $sql);
                         }
                         ?>
                     </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="5"></td>
+                            <th class="text-right">รวมทั้งสิ้น</th>
+                            <th class="text-left"><?= number_format($total_all)?> บาท</th>
+                            <th></th>
+                        </tr>
+                    </tfoot>
                 </table>
 
             </div>
